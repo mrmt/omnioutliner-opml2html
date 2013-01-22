@@ -1,0 +1,98 @@
+#!/usr/bin/perl -w
+#
+# omnioutliner-opml2html
+# morimoto@xantia.citroen.org
+# $Id: omnioutliner-opml2html,v 1.1 2004-02-04 12:39:38 morimoto Exp $
+# Based on opml2html.pl, shown below;
+#
+# opml2html.pl, (c) Jeremy Zawodny -- http://jerermy.zawodny.com/blog/
+#
+#   Updated by Michael Radwin (http://www.radwin.org/michael/blog/)
+#   on Dec 26th, 2003 to include image size attributes and link
+#   titles.
+#
+# You may distribute this code freely.  It's not rocket science.
+#
+# Given an OPML file on stdin, produces an XHTML "blgoroll" fragment
+# suitable for inclusion on a weblog.  Tested with AmphetaDesk and
+# Radio UserLand.
+#
+# Usage: opml2html.pl < foo.opml > bar.html
+#
+
+use strict;
+use XML::Simple;
+use Data::Dumper;
+use HTML::Entities;
+
+my $xml;
+
+{
+    local($/) = undef;
+    $xml = <>;
+}
+
+my $info = XML::Simple::XMLin($xml);
+my $data = $info->{body}->{outline};
+
+print qq(
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>$info->{head}->{title}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css"><!--
+      div.note { font-size: small; background: #ffd;}
+    --></style>
+  </head>
+  <body>
+    <h1>$info->{head}->{title}</h1>
+\n\n);
+
+
+print "<ul>\n";
+for my $item (@$data){
+  &dump($item);
+}
+print "</ul>\n";
+
+print "</body></html>\n";
+
+exit;
+
+################################################################
+sub dump{
+  my $item = shift;
+
+  print '<li>';
+  print $item->{text};
+  print qq(\n);
+
+  if(defined $item->{_note}){
+    print qq(<div class="note">\n);
+    local $_ = $item->{_note};
+    s/\n\n/<p>/g;
+    s/\n/<br>/g;
+    unless(s,(http://[!-;=-\177]+),<a href="$1">$1</a>,g){
+      s|(www\.[!-\177]+)|<A HREF="http://$1">$1</A>|g;
+    }
+    print;
+    print qq(</div>\n\n\n);
+  }
+
+  if($item->{outline}){
+    my $children = $item->{outline};
+    print qq(<ul>\n);
+    if(ref $children eq 'HASH'){
+	&dump($children);
+    }else{
+      for my $child (@$children){
+	&dump($child);
+      }
+    }
+    print qq(</ul>\n);
+  }
+}
+
+__END__
