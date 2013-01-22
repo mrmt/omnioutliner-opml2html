@@ -10,7 +10,7 @@ Mac OS XのアウトラインプロセッサOmniOutlinerで保存したOPMLをHTMLに変換するもの。
 OmniOutliner には以下のようなHTML出力方法がすでにいくつかあるが、どれも希望にあわなかったため作成:
 
 * OmniOutlinerネイティブのHTML出力
-  * ノート部分が改行なしにベタで出てしまう。意味ない<div>とフォントスタイル指定ばかりで、htmlとして(再)利用性が話にならない
+  * ノート部分が改行なしにベタで出てしまう。意味ない \<div\> とフォントスタイル指定ばかりで、htmlとして(再)利用性が話にならない
 * [OmniOutliner: Extras](http://www.omnigroup.com/applications/omnioutliner/extras/)にある AppleScript
   * 動かすとOmniOutlinerごと落ちる。たまに成功しても滅茶苦茶なHTMLが出る。
 * 同じく[OmniOutliner: Extras](http://www.omnigroup.com/applications/omnioutliner/extras/)
