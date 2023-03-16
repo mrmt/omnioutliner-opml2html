@@ -3,35 +3,35 @@ omnioutliner-opml2html
 
 convert OPML from OmniOutliner to HTML
 
-## ÀâÌÀ
+## èª¬æ˜
 
-Mac OS X¤Î¥¢¥¦¥È¥é¥¤¥ó¥×¥í¥»¥Ã¥µOmniOutliner¤ÇÊİÂ¸¤·¤¿OPML¤òHTML¤ËÊÑ´¹¤¹¤ë¤â¤Î¡£ÈÆÍÑÀ­¤Ï¤Ê¤¤¡£[opml2html.pl](http://jerermy.zawodny.com/blog/)¤ò¤¤¤¸¤Ã¤¿¡£
+Mac OS Xã®ã‚¢ã‚¦ãƒˆãƒ©ã‚¤ãƒ³ãƒ—ãƒ­ã‚»ãƒƒã‚µOmniOutlinerã§ä¿å­˜ã—ãŸOPMLã‚’HTMLã«å¤‰æ›ã™ã‚‹ã‚‚ã®ã€‚æ±ç”¨æ€§ã¯ãªã„ã€‚[opml2html.pl](http://jerermy.zawodny.com/blog/)ã‚’ã„ã˜ã£ãŸã€‚
 
-OmniOutliner ¤Ë¤Ï°Ê²¼¤Î¤è¤¦¤ÊHTML½ĞÎÏÊıË¡¤¬¤¹¤Ç¤Ë¤¤¤¯¤Ä¤«¤¢¤ë¤¬¡¢¤É¤ì¤â´õË¾¤Ë¤¢¤ï¤Ê¤«¤Ã¤¿¤¿¤áºîÀ®:
+OmniOutliner ã«ã¯ä»¥ä¸‹ã®ã‚ˆã†ãªHTMLå‡ºåŠ›æ–¹æ³•ãŒã™ã§ã«ã„ãã¤ã‹ã‚ã‚‹ãŒã€ã©ã‚Œã‚‚å¸Œæœ›ã«ã‚ã‚ãªã‹ã£ãŸãŸã‚ä½œæˆ:
 
-* OmniOutliner¥Í¥¤¥Æ¥£¥Ö¤ÎHTML½ĞÎÏ
-  * ¥Î¡¼¥ÈÉôÊ¬¤¬²ş¹Ô¤Ê¤·¤Ë¥Ù¥¿¤Ç½Ğ¤Æ¤·¤Ş¤¦¡£°ÕÌ£¤Ê¤¤ \<div\> ¤È¥Õ¥©¥ó¥È¥¹¥¿¥¤¥ë»ØÄê¤Ğ¤«¤ê¤Ç¡¢html¤È¤·¤Æ(ºÆ)ÍøÍÑÀ­¤¬ÏÃ¤Ë¤Ê¤é¤Ê¤¤
-* [OmniOutliner: Extras](http://www.omnigroup.com/applications/omnioutliner/extras/)¤Ë¤¢¤ë AppleScript
-  * Æ°¤«¤¹¤ÈOmniOutliner¤´¤ÈÍî¤Á¤ë¡£¤¿¤Ş¤ËÀ®¸ù¤·¤Æ¤âÌÇÃã¶ìÃã¤ÊHTML¤¬½Ğ¤ë¡£
-* Æ±¤¸¤¯[OmniOutliner: Extras](http://www.omnigroup.com/applications/omnioutliner/extras/)
-¤Ë¤¢¤ë Export from OmniOutliner to Microsoft Word
-  * Æ°¤«¤Ê¤¤¡£
+* OmniOutlinerãƒã‚¤ãƒ†ã‚£ãƒ–ã®HTMLå‡ºåŠ›
+  * ãƒãƒ¼ãƒˆéƒ¨åˆ†ãŒæ”¹è¡Œãªã—ã«ãƒ™ã‚¿ã§å‡ºã¦ã—ã¾ã†ã€‚æ„å‘³ãªã„ \<div\> ã¨ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«æŒ‡å®šã°ã‹ã‚Šã§ã€htmlã¨ã—ã¦(å†)åˆ©ç”¨æ€§ãŒè©±ã«ãªã‚‰ãªã„
+* [OmniOutliner: Extras](http://www.omnigroup.com/applications/omnioutliner/extras/)ã«ã‚ã‚‹ AppleScript
+  * å‹•ã‹ã™ã¨OmniOutlinerã”ã¨è½ã¡ã‚‹ã€‚ãŸã¾ã«æˆåŠŸã—ã¦ã‚‚æ»…èŒ¶è‹¦èŒ¶ãªHTMLãŒå‡ºã‚‹ã€‚
+* åŒã˜ã[OmniOutliner: Extras](http://www.omnigroup.com/applications/omnioutliner/extras/)
+ã«ã‚ã‚‹ Export from OmniOutliner to Microsoft Word
+  * å‹•ã‹ãªã„ã€‚
 
-## Æ°ºî´Ä¶­
+## å‹•ä½œç’°å¢ƒ
 
     use XML::Simple;
     use Data::Dumper;
     use HTML::Entities;
 
-¤Ã¤Æ´¶¤¸¤Ê¤Î¤Ç¡¢É¬Í×¤Ê¤â¤Î¤òCPAN¤Ê¤êapt-get¤Ê¤êperl -MCPAN -e shell¤·¤Æ¥¤¥ó¥¹¥È¡¼¥ë
+ã£ã¦æ„Ÿã˜ãªã®ã§ã€å¿…è¦ãªã‚‚ã®ã‚’CPANãªã‚Šapt-getãªã‚Šperl -MCPAN -e shellã—ã¦ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 
-## »È¤¤Êı
+## ä½¿ã„æ–¹
 
-    omnioutliner-opml2html &lt; sample.opml &gt; sample.html
+    omnioutliner-opml2html < sample.opml > sample.html
 
 ## Copyright
 
-opml2html.pl¤Ë½¾¤¦.
+opml2html.plã«å¾“ã†.
 
     # opml2html.pl, (c) Jeremy Zawodny -- http://jerermy.zawodny.com/blog/
     #
